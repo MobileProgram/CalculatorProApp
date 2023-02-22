@@ -126,7 +126,8 @@ public class MainActivity extends AppCompatActivity {
             return value.contains("*")
                     || value.contains("/")
                     || value.contains("+")
-                    || value.contains("-");
+                    || value.contains("-")
+                    || value.contains("%");
         }
     }
 
