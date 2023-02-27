@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mblhcmute.calculatorproapp.databinding.ActivityMainBinding;
 
@@ -15,12 +16,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean lastNumeric = false;
     private boolean lastDot = false;
     private boolean singledot = false;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         tvInput = binding.tvInput;
@@ -172,8 +172,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     tvInput.setText(removeZeroAfterDot(Double.toString(Double.parseDouble(one) % Double.parseDouble(two))));
                 }
-            } catch (ArithmeticException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                Toast.makeText(this, "Dữ liệu đầu vào không hợp lệ!", Toast.LENGTH_SHORT).show();
             }
         }
     }
